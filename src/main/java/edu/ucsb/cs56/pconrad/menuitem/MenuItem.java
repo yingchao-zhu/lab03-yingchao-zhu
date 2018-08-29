@@ -15,14 +15,19 @@ public class MenuItem {
 
 
     public MenuItem(String name, int priceInCents, String category) {
+        this.name = name;
+        this.priceInCents = priceInCents;
+this.category = category;
 		// stub
     }
     public String getCategory(){
-        return "stub";
+	return category;	
+        //return "stub";
     }
     
     public String getName(){
-        return "stub";
+	return name;
+        //return "stub";
 }
     /**
      Returns the price, formatted as a string with a $.
@@ -30,7 +35,12 @@ public class MenuItem {
      */
 
     public String getPrice() {
-		return "stub";
+        double price = priceInCents/100.0;
+        //df.format(price/100.0);
+        String priceS = Double.toString(price);
+        
+	return "$" + priceS;
+		//return "stub";
     }
 	
     /**
@@ -45,11 +55,19 @@ public class MenuItem {
      */
 
     public String getPrice(int width) {
-		return "stub";
+        if(width <= Integer.toString(this.priceInCents).length() + 1){
+            throw new TooNarrowException();
+        }
+        /*else if(this.priceInCents >1000 && width < 5)
+            throw new TooNarrowException();*/
+        
+	return String.format("%1$"+width+ "s", getPrice());
+	//	return "stub";
     }
     public int getPriceInCents(){
-	int x = 0;
-        return x;
+	return this.priceInCents;
+	//int x = 0;
+        //return x;
 }
     /**
      * return a string in csv format, in the order name,price,cateogry.
@@ -59,7 +77,9 @@ public class MenuItem {
 
     @Override
     public String toString() {
-		return "stub";
+        String output = getName() + ","+ Integer.toString(getPriceInCents()) + "," + getCategory();
+	return output;
+		//return "stub";
     }
 
 }
