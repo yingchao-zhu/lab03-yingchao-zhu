@@ -20,6 +20,45 @@ public class MenuTest {
         m.add(new MenuItem("Green Tea", 149, "Beverage"));
     }
 	
+    @Test
+    public void test_csv() {
+        String expected =
+        "Small Poke Bowl,1049,Poke Bowls" + nl +
+        "Medium Poke Bowl,1249,Poke Bowls" + nl +
+        "Large Poke Bowl,1449,Poke Bowls" + nl +
+        "Milk Tea,249,Beverage" + nl +
+        "Boba Tea,249,Beverage" + nl +
+        "Green Tea,149,Beverage" + nl +
+        "";
+        assertEquals(expected,m.csv());
+    }
+
+    @Test
+    public void test_csvSortedByCategoryThenName() {
+        String expected =
+        "Boba Tea,249,Beverage" + nl +
+        "Green Tea,149,Beverage" + nl +
+        "Milk Tea,249,Beverage" + nl +
+        "Large Poke Bowl,1449,Poke Bowls" + nl +
+        "Medium Poke Bowl,1249,Poke Bowls" + nl +
+        "Small Poke Bowl,1049,Poke Bowls" + nl +
+        "";
+        assertEquals(expected,m.csvSortedByCategoryThenName());
+    }
+    
+    @Test
+    public void test_csvSortedByCategoryThenPriceDescendingThenByName() {
+        String expected =
+        "Boba Tea,249,Beverage" + nl +
+        "Milk Tea,249,Beverage" + nl +
+        "Green Tea,149,Beverage" + nl +
+        "Large Poke Bowl,1449,Poke Bowls" + nl +
+        "Medium Poke Bowl,1249,Poke Bowls" + nl +
+        "Small Poke Bowl,1049,Poke Bowls" + nl +
+        "";
+        assertEquals(expected,m.csvSortedByCategoryThenPriceDescendingThenByName());
+    }
+    
 	@Test
     public void test_csvSortedByName() {
         String expected =
@@ -45,5 +84,6 @@ public class MenuTest {
                         "";
         assertEquals(expected,m.csvSortedByPriceThenName());
     }
+    
 
 }

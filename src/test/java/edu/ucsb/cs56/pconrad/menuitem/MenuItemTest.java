@@ -1,3 +1,4 @@
+
 package edu.ucsb.cs56.pconrad.menuitem;
 
 import static org.junit.Assert.assertEquals;
@@ -10,7 +11,8 @@ public class MenuItemTest {
 
     private MenuItem smallPokeBowl; 
     
-    @Before public void setUp() {
+    @Before
+    public void setUp() {
 		smallPokeBowl = new MenuItem("Small Poke Bowl",1049,"Poke Bowls");
     }
 
@@ -41,10 +43,25 @@ public class MenuItemTest {
     public void test_getPrice_0() {
 		smallPokeBowl.getPrice(0);
     }
+    @Test
+    public void test_getName() {
+        assertEquals("Small Poke Bowl",smallPokeBowl.getName());
+    }
+    @Test
+    public void test_getCategory() {
+        assertEquals("Poke Bowls",smallPokeBowl.getCategory());
+    }
+    @Test
+    public void test_getPriceInCents() {
+        assertEquals(1049,smallPokeBowl.getPriceInCents());
+    }
 
     @Test
     public void test_toString() {
         assertEquals("Small Poke Bowl,1049,Poke Bowls",smallPokeBowl.toString());
     }
+    
+    
+
 
 }
