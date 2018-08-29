@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MenuItem.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">menuitem</a> &gt; <a href="index.source.html" class="el_package">edu.ucsb.cs56.pconrad.menuitem</a> &gt; <span class="el_source">MenuItem.java</span></div><h1>MenuItem.java</h1><pre class="source lang-java linenums">package edu.ucsb.cs56.pconrad.menuitem;
+
+public class MenuItem {
+
+    private String name;
+    private int priceInCents;
+    private String category;
+
+    /**
+     Custom exception thrown when getPrice is called with a width
+     that is too narrow for the formatted price.
+     */
+
+<span class="fc" id="L14">    public static class TooNarrowException extends RuntimeException {}</span>
+
+
+<span class="fc" id="L17">    public MenuItem(String name, int priceInCents, String category) {</span>
+<span class="fc" id="L18">        this.name = name;</span>
+<span class="fc" id="L19">        this.priceInCents = priceInCents;</span>
+<span class="fc" id="L20">this.category = category;</span>
+		// stub
+<span class="fc" id="L22">    }</span>
+    public String getCategory(){
+<span class="fc" id="L24">	return category;	</span>
+        //return &quot;stub&quot;;
+    }
+    
+    public String getName(){
+<span class="fc" id="L29">	return name;</span>
+        //return &quot;stub&quot;;
+}
+    /**
+     Returns the price, formatted as a string with a $.
+     For example &quot;$0.99&quot;, &quot;$10.99&quot;, or &quot;$3.50&quot;
+     */
+
+    public String getPrice() {
+<span class="fc" id="L38">        double price = priceInCents/100.0;</span>
+        //df.format(price/100.0);
+<span class="fc" id="L40">        String priceS = Double.toString(price);</span>
+        
+<span class="fc" id="L42">	return &quot;$&quot; + priceS;</span>
+		//return &quot;stub&quot;;
+    }
+	
+    /**
+     Returns the price, formatted as a string with a $,
+     right justified in a field with the specified width.
+     For example &quot;$0.99&quot;, &quot;$10.99&quot;, or &quot;$3.50&quot;.
+
+     If the width is too small, throws IllegalArgumentException
+
+     @param width width of returned string
+
+     */
+
+    public String getPrice(int width) {
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if(width &lt;= Integer.toString(this.priceInCents).length() + 1){</span>
+<span class="fc" id="L59">            throw new TooNarrowException();</span>
+        }
+        /*else if(this.priceInCents &gt;1000 &amp;&amp; width &lt; 5)
+            throw new TooNarrowException();*/
+        
+<span class="fc" id="L64">	return String.format(&quot;%1$&quot;+width+ &quot;s&quot;, getPrice());</span>
+	//	return &quot;stub&quot;;
+    }
+    public int getPriceInCents(){
+<span class="fc" id="L68">	return this.priceInCents;</span>
+	//int x = 0;
+        //return x;
+}
+    /**
+     * return a string in csv format, in the order name,price,cateogry.
+     * For example &lt;code&gt;Small Poke Bowl,1049,Poke Bowls&lt;/code&gt;
+     * @return string in csv format
+     */
+
+    @Override
+    public String toString() {
+<span class="fc" id="L80">        String output = getName() + &quot;,&quot;+ Integer.toString(getPriceInCents()) + &quot;,&quot; + getCategory();</span>
+<span class="fc" id="L81">	return output;</span>
+		//return &quot;stub&quot;;
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

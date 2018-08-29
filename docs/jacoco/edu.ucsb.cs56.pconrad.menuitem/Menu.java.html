@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Menu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">menuitem</a> &gt; <a href="index.source.html" class="el_package">edu.ucsb.cs56.pconrad.menuitem</a> &gt; <span class="el_source">Menu.java</span></div><h1>Menu.java</h1><pre class="source lang-java linenums">package edu.ucsb.cs56.pconrad.menuitem;
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class Menu {
+	
+    private ArrayList&lt;MenuItem&gt; menuitems;
+
+<span class="fc" id="L9">    public Menu() {</span>
+<span class="fc" id="L10">        menuitems = new ArrayList&lt;MenuItem&gt;();</span>
+<span class="fc" id="L11">    }</span>
+
+    public void add(MenuItem mi) {
+<span class="fc" id="L14">	menuitems.add(mi);</span>
+	// stub
+<span class="fc" id="L16">    }</span>
+
+    public String csv() {
+<span class="fc" id="L19">        String result = &quot;&quot;;</span>
+<span class="fc" id="L20">        String nl = System.lineSeparator();</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        for(MenuItem m : menuitems){</span>
+<span class="fc" id="L22">            result += m.toString();</span>
+<span class="fc" id="L23">            result += nl;</span>
+<span class="fc" id="L24">        }</span>
+<span class="fc" id="L25">	return result;</span>
+       // return &quot;stub&quot;;
+    }
+
+
+    public String csvSortedByPriceThenName() {
+<span class="fc" id="L31">        Comparator&lt;MenuItem&gt; groupByComparator = Comparator.comparing(MenuItem::getPriceInCents) .thenComparing(MenuItem::getName);</span>
+<span class="fc" id="L32">        menuitems.sort(groupByComparator);</span>
+        
+       
+<span class="fc" id="L35">	return csv();</span>
+
+      // return &quot;stub&quot;;
+    }
+
+    public String csvSortedByName() {
+<span class="fc" id="L41">        menuitems.sort((MenuItem m1, MenuItem m2)-&gt;m1.getName().compareTo(m2.getName()));</span>
+<span class="fc" id="L42">	return csv();</span>
+       // return &quot;stub&quot;;
+    }
+
+    public String csvSortedByCategoryThenName() {
+<span class="fc" id="L47">        Comparator&lt;MenuItem&gt; groupByComparator = Comparator.comparing(MenuItem::getCategory)</span>
+<span class="fc" id="L48">        .thenComparing(MenuItem::getName);</span>
+<span class="fc" id="L49">        menuitems.sort(groupByComparator);</span>
+<span class="fc" id="L50">	return csv();</span>
+        //return &quot;stub&quot;;
+
+    }
+
+    public String csvSortedByCategoryThenPriceDescendingThenByName() {
+<span class="fc" id="L56">        Comparator&lt;MenuItem&gt; groupByComparator = Comparator.comparing(MenuItem::getCategory).thenComparing((MenuItem m1, MenuItem m2)-&gt;m2.getPriceInCents()-m1.getPriceInCents()).thenComparing(MenuItem::getName);</span>
+<span class="fc" id="L57">        menuitems.sort(groupByComparator);</span>
+
+<span class="fc" id="L59">	return csv();</span>
+        //return &quot;stub&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
