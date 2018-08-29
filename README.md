@@ -9,6 +9,9 @@ github_org: "ucsb-cs56-m18"
 starter_repo: "https://github.com/ucsb-cs56-m18/STARTER_lab03"
 ---
 
+https://yingchao-zhu.github.io/lab03-yingchao-zhu/
+
+
 In this lab:
 
 -   using Maven instead of Ant
